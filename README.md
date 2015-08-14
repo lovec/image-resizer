@@ -68,6 +68,8 @@ For Heroku deployment the minimum required variables are:
     AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY
     AWS_REGION
+	AWS_ENDPOINT
+	AWS_SIGNATURE    
     S3_BUCKET
     NODE_ENV
 
