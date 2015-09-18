@@ -70,7 +70,8 @@ module.exports = function () {
       break;
 
     case 'resize':
-      r.resize(image.modifiers.width, image.modifiers.height);
+      r.resize(image.modifiers.width, image.modifiers.height)
+        .interpolateWith(sharp.interpolator.bicubic).sharpen();
       r.max();
       r.toBuffer(resizeResponse);
       break;
@@ -89,7 +90,8 @@ module.exports = function () {
         r.resize(
             d.resize.width,
             d.resize.height
-          ).extract(
+          ).interpolateWith(sharp.interpolator.bicubic).sharpen()
+          .extract(
             d.crop.y,
             d.crop.x,
             d.crop.width,
@@ -111,7 +113,8 @@ module.exports = function () {
 
         switch(image.modifiers.crop){
         case 'fit':
-          r.resize(image.modifiers.width, image.modifiers.height);
+          r.resize(image.modifiers.width, image.modifiers.height)
+            .interpolateWith(sharp.interpolator.bicubic).sharpen();
           r.max();
           break;
         case 'fill':
@@ -120,7 +123,8 @@ module.exports = function () {
           r.resize(
               d.resize.width,
               d.resize.height
-            ).extract(
+            ).interpolateWith(sharp.interpolator.bicubic).sharpen()
+            .extract(
               d.crop.y,
               d.crop.x,
               d.crop.width,
@@ -142,7 +146,8 @@ module.exports = function () {
           break;
         case 'scale':
           // TODO: deal with scale
-          r.resize(image.modifiers.width, image.modifiers.height);
+          r.resize(image.modifiers.width, image.modifiers.height)
+            .interpolateWith(sharp.interpolator.bicubic).sharpen();
           break;
         case 'pad':
           r.resize(
